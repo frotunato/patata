@@ -10,14 +10,14 @@ fi
 sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante@gmail.com"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo apt-get -y install libmicrohttpd-dev mailutils ssmtp unzip
+sudo rm /home/patata-master/patata
+sudo rm /home/patata-master/config.txt
+sudo rm /home/pesetas.log
 sudo unzip master.zip -d /home
 sudo rm master.zip
 #cd /home/patata-master
 sudo chmod +x /etc/ssmtp
 sudo chmod +x /etc/ssmtp/ssmtp.conf
-sudo rm /home/patata-master/patata
-sudo rm /home/patata-master/config.txt
-sudo rm /home/pesetas.log
 sudo bash -c 'echo "AuthUser=salchipapa.llameante@gmail.com" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
