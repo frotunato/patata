@@ -1,0 +1,28 @@
+"cpu_thread_num" : 8,
+"cpu_threads_conf" : [
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":0 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":1 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":2 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":3 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":4 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":5 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":6 },
+{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu":7 }
+],
+"use_slow_memory" : "warn",
+"nicehash_nonce" : false,
+"use_tls" : true,
+"tls_secure_algo" : false,
+"tls_fingerprint" : "",
+"pool_address" : "pool.minexmr.com:6666","wallet_address" : 
+"4A6xNd9dSaqL29V2mzpzDFfcUg4JG4wy2PZq5iAmy9ezXvvsVaYzdCPhikXYYTQ54DWpT7VVSfen6LqfgoNPmuP5Cz8o5ZR"
+,
+"pool_password" : "",
+"call_timeout" : 10,
+"retry_time" : 10,
+"giveup_limit" : 0,
+"verbose_level" : 4,
+"h_print_time" : 60,
+"output_file" : "/home/pesetas.log",
+"httpd_port" : 0,
+"prefer_ipv4" : true,
