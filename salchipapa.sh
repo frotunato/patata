@@ -11,25 +11,26 @@ sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llam
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo apt-get -y install libmicrohttpd-dev mailutils ssmtp unzip
 sudo unzip master.zip -d /home
-cd /home
+sudo rm master.zip
+#cd /home/patata-master
 sudo chmod +x /etc/ssmtp
 sudo chmod +x /etc/ssmtp/ssmtp.conf
-sudo rm /home/patata
-sudo rm /home/config.txt
+sudo rm /home/patata-master/patata
+sudo rm /home/patata-master/config.txt
 sudo rm /home/pesetas.log
 sudo bash -c 'echo "AuthUser=salchipapa.llameante@gmail.com" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
 #wget https://transfer.sh/CVVrP/patata
-sudo chmod +x patata
+sudo chmod +x /home/patata-master/patata
 #wget -O /home/config.txt https://pastebin.com/raw/ez38Jpxi
-sudo sed -i "18s/.*/\""$1"\"/" /home/config.txt
+sudo sed -i "18s/.*/\""$1"\"/" /home/patata-master/config.txt
 sudo sysctl -w vm.nr_hugepages=128
 sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
 sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
 cd /home
-screen -dm sudo /home/patata /home/config.txt
+screen -dm sudo /home/patata-master/patata /home/patata-master/config.txt
  
 if [ $# -eq 2 ]
   then
