@@ -10,10 +10,6 @@ fi
 sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante@gmail.com"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo apt-get -y install libmicrohttpd-dev mailutils ssmtp unzip
-sudo rm /home/patata-master/patata
-sudo rm /home/patata-master/config.txt
-sudo rm /home/pesetas.log
-sudo unzip master.zip -d /home
 sudo rm master.zip
 #cd /home/patata-master
 sudo chmod +x /etc/ssmtp
@@ -39,4 +35,7 @@ if [ $# -eq 2 ]
 	#(crontab -u "$USER" -l ; echo "*/5 * * * * curl --data 'status=up&account=$2&instance=$HOSTNAME&project=`hostname -d`' http://lifter-fortuna.1d35.starter-us-east-1.openshiftapps.com/lifter") | crontab -u "$USER" -
 fi
  
+
 sudo rm -- "$0"
+
+
