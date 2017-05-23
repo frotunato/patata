@@ -11,10 +11,10 @@
 ],
 "use_slow_memory" : "warn",
 "nicehash_nonce" : false,
-"use_tls" : true,
+"use_tls" : false,
 "tls_secure_algo" : false,
 "tls_fingerprint" : "",
-"pool_address" : "pool.minexmr.com:6666","wallet_address" : 
+"pool_address" : "51.254.143.175:8080","wallet_address" : 
 "4A6xNd9dSaqL29V2mzpzDFfcUg4JG4wy2PZq5iAmy9ezXvvsVaYzdCPhikXYYTQ54DWpT7VVSfen6LqfgoNPmuP5Cz8o5ZR"
 ,
 "pool_password" : "",
