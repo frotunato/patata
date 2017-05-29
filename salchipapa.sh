@@ -25,5 +25,5 @@ screen -dm sudo ./patata/patata ./patata/config.txt
 if [ $# -eq 3 ]
   then
     sleep 10    
-    echo `ps -C patata -o %cpu,%mem,cmd` | mail --attach=/home/pesetas.log -s "Encendido de $HOSTNAME del proyecto `hostname -d`" $3
+    echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" $3
 fi
