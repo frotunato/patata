@@ -14,13 +14,13 @@ sudo bash -c 'echo "AuthUser=salchipapa.llameante@gmail.com" >> /etc/ssmtp/ssmtp
 sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
 sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
-sudo chmod +x ./patata-master/patata
-sudo sed -i "20s/.*/\""$HOSTNAME"\"/" ./patata-master/config.txt
-sudo sed -i "18s/.*/\""$1"\"/" ./config.txt
+sudo chmod +x ./patata/patata
+sudo sed -i "20s/.*/\""$1"\"/" ./patata/config.txt
+sudo sed -i "18s/.*/\""$2"\"/" ./config.txt
 sudo sysctl -w vm.nr_hugepages=128
 sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
 sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
-screen -dm sudo ./patata-master/patata ./patata-master/config.txt
+screen -dm sudo ./patata/patata ./patata/config.txt
  
 if [ $# -eq 3 ]
   then
