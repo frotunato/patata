@@ -8,7 +8,7 @@ fi
 cd home
 sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante@gmail.com"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
-sudo apt-get -y install mailutils ssmtp
+sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
 sudo chmod +x /etc/ssmtp
 sudo chmod +x /etc/ssmtp/ssmtp.conf
 sudo bash -c 'echo "AuthUser=salchipapa.llameante@gmail.com" >> /etc/ssmtp/ssmtp.conf'
