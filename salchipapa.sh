@@ -17,7 +17,7 @@ sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
 sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
 screen -dm sudo /patata/patata /patata/config.txt
 
-if [ $# -eq 2 ]
+if [ $# -eq 3 ]
   then
     sleep 10    
     echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" $3
