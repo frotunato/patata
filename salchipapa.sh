@@ -20,8 +20,8 @@ screen -dm sudo /patata/patata /patata/config.txt
 
 if [ $# -eq 3 ]
   then
-    sleep 10    
-    echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" $3
-	(crontab -l ; echo "*/15 * * * * /patata/tramboliko.sh $3") | sort - | uniq - | crontab -
+    sleep 10
+    echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" "$3"
+    (crontab -l ; echo "*/15 * * * * /patata/tramboliko.sh $3") | sort - | uniq - | crontab -
 
 fi
