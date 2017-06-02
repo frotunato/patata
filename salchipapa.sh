@@ -1,6 +1,6 @@
 #!/bin/bash
 cd home
-crontab -r 2>/dev/null
+sudo rm /etc/cron.d/beacon
 sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante@gmail.com"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
@@ -22,6 +22,5 @@ if [ $# -eq 3 ]
   then
     sleep 10
     echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" "$3"
-    (crontab -l ; echo "*/2 * * * * bash /patata/tramboliko.sh $3") | sort - | uniq - | crontab -
-
+    echo */2 * * * * `whoami` bash /patata/tramboliko.sh | sudo tee /etc/cron.d/beacon
 fi
