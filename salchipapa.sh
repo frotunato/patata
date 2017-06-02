@@ -23,6 +23,7 @@ if [ $# -eq 3 ]
     sleep 10
     echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" "$3"
     #sudo touch /etc/cron.d/beacon
-    echo '*/2 * * * * "`whoami`" bash /patata/tramboliko.sh' | sudo tee /etc/cron.d/beacon
+    user=`whoami`
+    echo "*/2 * * * * $user bash /patata/tramboliko.sh" | sudo tee /etc/cron.d/beacon
     #bash -c 'echo "*/2 * * * * `whoami` bash /patata/tramboliko.sh" >> /etc/cron.d/beacon'
 fi
