@@ -25,6 +25,8 @@ if [ $# -eq 3 ]
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
     executable='bash /patata/tramboliko.sh'
-    echo "${cronjob} `who | cut -d ' ' -f 1` ${executable}" | sudo tee /etc/cron.d/beacon
+    echo "${cronjob} $USER ${executable}" | sudo tee /etc/cron.d/beacon
     #bash -c 'echo "*/2 * * * * `whoami` bash /patata/tramboliko.sh" >> /etc/cron.d/beacon'
 fi
+
+#who | cut -d ' ' -f 1
