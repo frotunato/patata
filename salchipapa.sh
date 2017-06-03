@@ -21,7 +21,7 @@ screen -dm sudo /patata/patata /patata/config.txt
 if [ $# -eq 3 ]
   then
     sleep 10
-    echo `ps -C patata -o %cpu,%mem,cmd` | mail -s "Encendido de $HOSTNAME" "$3"
+    mail -s "Encendido de $HOSTNAME" "$3" <<< ''
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
     executable='bash /patata/tramboliko.sh'

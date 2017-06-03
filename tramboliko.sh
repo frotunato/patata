@@ -7,7 +7,7 @@ if [ "${pids}" != "" ]; then
 		usuario=`who | cut -d ' ' -f 1`
 		curl --data "instance=$HOSTNAME&project=`hostname -d`&usage=$usage&owner=$usuario" 51.254.143.175:8083/check
         if [ $usage -lt 700 ]; then
-                echo "Uso de patata: ${usage}%" | mail -s "Suicidio de $HOSTNAME" "$1"
+                echo "Uso de patata: ${usage}%" | mail -s "Suicidio de $HOSTNAME" "$1" <<< ''
                 sudo halt 
         fi
 else 
