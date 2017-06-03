@@ -1,6 +1,7 @@
 #!/bin/bash
 cd home
 sudo rm /etc/cron.d/beacon
+sudo rm -rf /home/ubuntu
 sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante@gmail.com"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
