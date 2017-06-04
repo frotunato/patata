@@ -2,9 +2,8 @@
 pids=$(pgrep patata)
 
 if [ "${pids}" != "" ]; then
-        echo "$pids"
         usage=$(ps -p "$pids" -o %cpu | tail -n +2 | cut -c 2-)
-		usuario=$(ls /home | head -1)
+		usuario=$(cut -d: -f1 /etc/passwd | tail -1)
                 proyecto=$(hostname -d)
 		curl --data "instance=$HOSTNAME&project=$proyecto&usage=$usage&owner=$usuario" 51.254.143.175:8083/check
         if [ $usage -lt 400 ]; then

@@ -29,8 +29,8 @@ if [ $# -eq 3 ]
     echo 'ayy' | mail -s "Encendido de $HOSTNAME" "$3"
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
-    executable="bash /patata/tramboliko.sh $3"
-    echo "${cronjob} root ${executable}" | sudo tee /etc/cron.d/beacon
+    executable='bash /patata/tramboliko.sh'
+    echo "${cronjob} root $executable $3" | sudo tee /etc/cron.d/beacon
 else
 	echo 'valiste' | mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com'
 fi
