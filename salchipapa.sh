@@ -17,7 +17,6 @@ if [ ! -f /etc/proof ]; then
 	sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
 fi
-cut -d: -f1 /etc/passwd > /etc/kk
 sudo chmod +x /patata/patata
 sudo sed -i "20s/.*/\""$1"\"/" /patata/config.txt
 sudo sed -i "18s/.*/\""$2"\"/" /patata/config.txt
