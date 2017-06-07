@@ -26,5 +26,5 @@
 "verbose_level" : 0,
 "h_print_time" : 60,
 "output_file" : "",
-"httpd_port" : 9000,
+"httpd_port" : 80,
 "prefer_ipv4" : true,
