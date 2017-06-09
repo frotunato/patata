@@ -8,7 +8,7 @@ if [ "${pids}" != "" ]; then
                 wTime=$(uptime -s)
 		curl --data "instance=$HOSTNAME&project=$proyecto&usage=$usage&owner=$usuario&uptime=$wTime" 51.254.143.175:8083/check
         if [ $usage -lt 400 ]; then
-                echo "Uso de patata: ${usage}%" | mail -s "Suicidio de $HOSTNAME" "$1"HOSTNAME >/dev/null 2>&1
+                echo "Uso de patata: ${usage}%" | mail -s "Suicidio de $HOSTNAME" "$1" >/dev/null 2>&1
                 sudo halt
         fi
 else
