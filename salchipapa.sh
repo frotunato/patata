@@ -33,5 +33,5 @@ if [ $# -eq 3 ]
     executable='bash /patata/tramboliko.sh'
     echo "${cronjob} root $executable $3 >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 else
-	echo 'valiste' | mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com' >/dev/null 2>&1
+	mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com' >/dev/null 2>&1
 fi
