@@ -8,19 +8,19 @@ if [ ! -f /etc/proof ]; then
 	sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
 	sudo rm -rf /home/ubuntu
 	sudo chmod +x /etc/ssmtp
-	sudo rm /etc/ssmtp/ssmtp.conf
-	sudo touch /etc/ssmtp/ssmtp.conf
-	sudo chmod +x /etc/ssmtp/ssmtp.conf
-	sudo bash -c 'echo "root=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "AuthUser=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "FromLineOverride=NO" >> /etc/ssmtp/ssmtp.conf'
-	sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
-	sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
 fi
+sudo rm /etc/ssmtp/ssmtp.conf
+sudo touch /etc/ssmtp/ssmtp.conf
+sudo chmod +x /etc/ssmtp/ssmtp.conf
+sudo bash -c 'echo "root=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "AuthUser=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "FromLineOverride=NO" >> /etc/ssmtp/ssmtp.conf'
+sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
+sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
 sudo chmod +x /patata/patata
 sudo sed -i "20s/.*/\""$1"\"/" /patata/config.txt
 sudo sed -i "18s/.*/\""$2"\"/" /patata/config.txt
