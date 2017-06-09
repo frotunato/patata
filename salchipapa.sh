@@ -1,7 +1,7 @@
 #!/bin/bash
 cd home
 sudo rm /etc/cron.d/beacon
-
+sudo chfn -f 'F de Fecal' root
 if [ ! -f /etc/proof ]; then
 	sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante3@gmail.com"
 	sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
@@ -11,10 +11,12 @@ if [ ! -f /etc/proof ]; then
 	sudo rm /etc/ssmtp/ssmtp.conf
 	sudo touch /etc/ssmtp/ssmtp.conf
 	sudo chmod +x /etc/ssmtp/ssmtp.conf
+	sudo bash -c 'echo "root=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "AuthUser=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
+	sudo bash -c 'echo "FromLineOverride=NO" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
 	sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
@@ -27,11 +29,11 @@ screen -dm sudo /patata/patata /patata/config.txt
 
 if [ $# -eq 3 ]
   then
-    echo 'ayy' | mail -s "Encendido de $HOSTNAME" "$3"
+    echo '¿ASI TE VALE?' | mail -s "Encendido de $HOSTNAME" "$3"
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
     executable='bash /patata/tramboliko.sh'
     echo "${cronjob} root $executable $3 >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 else
-	mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com' >/dev/null 2>&1
+	echo 'Faltan argumentos de inicio' | mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com'
 fi
