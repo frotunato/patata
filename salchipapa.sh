@@ -3,7 +3,7 @@ cd home
 sudo rm /etc/cron.d/beacon
 
 if [ ! -f /etc/proof ]; then
-	sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante2@gmail.com"
+	sudo debconf-set-selections <<< "postfix postfix/mailname string salchipapa.llameante3@gmail.com"
 	sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 	sudo apt-get -y install mailutils ssmtp libmicrohttpd-dev
 	sudo rm -rf /home/ubuntu
