@@ -11,7 +11,7 @@ if [ ! -f /etc/proof ]; then
 	sudo rm /etc/ssmtp/ssmtp.conf
 	sudo touch /etc/ssmtp/ssmtp.conf
 	sudo chmod +x /etc/ssmtp/ssmtp.conf
-	sudo bash -c 'echo "AuthUser=salchipapa.llameante2@gmail.com" >> /etc/ssmtp/ssmtp.conf'
+	sudo bash -c 'echo "AuthUser=salchipapa.llameante3@gmail.com" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "AuthPass=tuculoesmio" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf'
 	sudo bash -c 'echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf'
