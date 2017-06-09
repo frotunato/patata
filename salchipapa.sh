@@ -35,5 +35,5 @@ if [ $# -eq 3 ]
     executable='bash /patata/tramboliko.sh'
     echo "${cronjob} root $executable $3 >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 else
-	echo 'Faltan argumentos de inicio' | mail -s "MAREA NEGRA en $HOSTNAME" 'frotunato@gmail.com'
+	echo 'Faltan argumentos de inicio' | mail -s "MAREA NEGRA en $HOSTNAME" "$1"
 fi
