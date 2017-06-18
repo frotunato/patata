@@ -18,5 +18,5 @@ if [ $# -eq 3 ]; then
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
     executable='bash /patata/tramboliko.sh'
-    echo "${cronjob} root $executable $3 >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
+    echo "${cronjob} root $executable >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 fi
