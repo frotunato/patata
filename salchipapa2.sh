@@ -28,6 +28,6 @@ screen -dm sudo nodejs /patata/hook.js "$1" "$2"
 if [ $# -eq 3 ]; then
     sudo touch /etc/cron.d/beacon
     cronjob='*/2 * * * *'
-    executable='bash /patata/tramboliko2.sh'
+    #executable='bash /patata/tramboliko2.sh'
     #echo "${cronjob} root $executable >/dev/null 2>&1" | sudo tee /etc/cron.d/beacon
 fi
