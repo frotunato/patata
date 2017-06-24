@@ -56,6 +56,10 @@ function sendData (callback) {
         });
         req.write(JSON.stringify(body));
         req.end();
+        req.on('error', function (e) {
+            console.log('Problem with request:', options);
+        });
+
 }
 
 miner.stdout.on('data', function (data) {
