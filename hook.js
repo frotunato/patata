@@ -70,10 +70,10 @@ miner.stdout.on('data', function (data) {
     if (data.indexOf('speed') !== -1) {
         var hashrates = data.split(' ');
         body.hashrate = {
-            short: Math.ceil(Number.parseInt(hashrates[4])),
-            mid: Math.ceil(Number.parseInt(hashrates[5])),
-            long: Math.ceil(Number.parseInt(hashrates[6])),
-            highest: Math.ceil(Number.parseInt(hashrates[9]))
+            short: hashrates[4],
+            mid: hashrates[5],
+            long: hashrates[6],
+            highest: hashrates[9]
         };
         body.uptime = os.uptime() * 1000;
         sendData(function () {
