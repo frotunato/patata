@@ -1,7 +1,6 @@
-sudo rm /etc/cron.d/beacon
-
 #!/bin/bash
-sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
+sudo rm /etc/cron.d/beacon
+sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
 if [ ! -f /etc/proof ]; then
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
