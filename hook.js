@@ -77,7 +77,7 @@ miner.stdout.on('data', function (data) {
         };
         body.uptime = os.uptime() * 1000;
         sendData(function () {
-                console.log('sended', body);
+            console.log('sended', body);
         });
     }
 });
