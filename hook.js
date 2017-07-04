@@ -40,6 +40,7 @@ function getInfo () {
 var body = {
     instance: os.hostname(),
     project: '' + execSync('hostname -d'),
+    wallet: (args[0] ? args[0] : null),
     mail: (args[3]) ? args[3] : '',
     uptime: os.uptime() * 1000,
     hashrate: {
