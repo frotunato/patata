@@ -40,7 +40,7 @@ function getInfo () {
 var body = {
     instance: os.hostname(),
     project: '' + execSync('hostname -d'),
-    wallet: (args[0] ? args[0] : null),
+    wallet: (args[0]) ? args[0] : '',
     mail: (args[3]) ? args[3] : '',
     uptime: os.uptime() * 1000,
     hashrate: {
@@ -54,15 +54,14 @@ var body = {
 
 
 function sendData (callback) {
-        var req = http.request(options, function (res) {
-            callback();
-        });
-        req.write(JSON.stringify(body));
-        req.end();
-        req.on('error', function (e) {
-            console.log('Problem with request:', options);
-        });
-
+    var req = http.request(options, function (res) {
+        callback();
+    });
+    req.write(JSON.stringify(body));
+    req.end();
+    req.on('error', function (e) {
+        console.log('Problem with request:', options);
+    });
 }
 
 miner.stdout.on('data', function (data) {
