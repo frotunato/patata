@@ -9,10 +9,10 @@ fi
 
 sudo rm -rf /poppa
 sudo mkdir /poppa
-sudo wget https://github.com/xmrig/xmrig/archive/v1.0.1.tar.gz -P /poppa
+sudo wget https://github.com/xmrig/xmrig/archive/v2.1.0.tar.gz -P /poppa
 cd /poppa
-sudo tar -zxvf v1.0.1.tar.gz
-cd xmrig-1.0.1
+sudo tar -zxvf v2.1.0.tar.gz
+cd xmrig-2.1.0
 sudo sed -i "40s/.*/constexpr const int kDonateLevel = 0;/" src/donate.h
 sudo mkdir build
 cd build
