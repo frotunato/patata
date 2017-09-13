@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo rm /etc/cron.d/beacon
-sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+sudo curl -sL https://deb.nodesource.com/setup_8.x -o /etc/install_node.sh
+sudo bash /etc/install_node.sh
 sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
 if [ ! -f /etc/proof ]; then
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
