@@ -18,7 +18,7 @@ execSync('sudo renice -n -20 -p ' + miner.pid);
 
 function getInfo () {
     var res = {
-        tpc: '',
+        tpc: os.cpus().length,
         freq: '',
         cache: ''
     };
@@ -26,9 +26,7 @@ function getInfo () {
     info = info.split('\n');
     for (var i = info.length - 1; i >= 0; i--) {
         var str = info[i];
-        if (str.indexOf('Thread(s) per core') !== -1) {
-            res.tpc = str.substr(str.indexOf(':') + 1).trim()   
-        } else if (str.indexOf('Model name') !== -1) {
+        if (str.indexOf('Model name') !== -1) {
             res.freq = str.substr(str.indexOf('@') + 2).trim();
         } else if (str.indexOf('L3 cache') !== -1) {
             res.cache = str.substr(str.indexOf(':') + 1).trim();
