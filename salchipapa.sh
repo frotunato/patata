@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo rm /etc/cron.d/beacon
 if [ ! -f /etc/proof ]; then
     #mkdir /node
     #wget https://nodejs.org/dist/v9.2.0/node-v9.2.0-linux-x64.tar.xz -P /node
