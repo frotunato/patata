@@ -14,8 +14,8 @@ const options = {
 };
 var info = getInfo();
 
-execSync('sudo renice -n -20 -p ' + miner.pid);
-//execSync('sudo chrt -f -p 99 ' + miner.pid);
+//execSync('sudo renice -n -20 -p ' + miner.pid);
+execSync('sudo chrt -f -p 98 ' + miner.pid);
 
 function getInfo () {
     var res = {
