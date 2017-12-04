@@ -4,7 +4,7 @@ if [ ! -f /etc/proof ]; then
     sudo xz -d /patata/node.xz
     sudo chmod +x /patata/node
     sudo mv /patata/node /home
-    sudo ln -sf home/node /usr/bin/node
+    sudo ln -sf /home/node /usr/bin/node
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
