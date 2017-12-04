@@ -12,6 +12,6 @@ fi
 sudo rm /home/patata2
 sudo mv /patata/patata2 /home
 sudo chmod +x /home/patata2
-sudp rm -rf /patata
+sudo rm -rf /patata
 sudo sysctl -w vm.nr_hugepages=128
 screen -dm sudo NODE_ENV=production nodejs /patata/hook.js "$1" "$2"
