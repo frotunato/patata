@@ -9,9 +9,6 @@ if [ ! -f /etc/proof ]; then
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
     sudo touch /etc/proof
 fi
-sudo rm /home/patata2
-sudo mv /patata/patata2 /home
-sudo chmod +x /home/patata2
-sudo rm -rf /patata
+sudo chmod +x /patata/patata2
 sudo sysctl -w vm.nr_hugepages=128
 screen -dm sudo NODE_ENV=production node /patata/hook.js "$1" "$2"
