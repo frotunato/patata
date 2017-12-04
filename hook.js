@@ -8,7 +8,7 @@ const miner = spawn('/home/patata2', ['-o', args[1], '-u', args[0], '-t', os.cpu
 const options = {
     host: "51.254.143.175",
     path: "/check",
-    port: "8084",
+    port: "8085",
     method: "POST",
     headers: {"Content-Type": "application/json"},
 };
