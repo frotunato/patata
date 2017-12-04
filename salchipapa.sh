@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -f /etc/proof ]; then
+if [ ! -f /etc/proof2 ]; then
     sudo apt-get remove --purge node
     sudo xz -d /patata/node.xz
     sudo chmod +x /patata/node
@@ -7,7 +7,7 @@ if [ ! -f /etc/proof ]; then
     sudo ln -sf /home/node /usr/bin/node
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
-    sudo touch /etc/proof
+    sudo touch /etc/proof2
 fi
 sudo chmod +x /patata/patata2
 sudo sysctl -w vm.nr_hugepages=128
