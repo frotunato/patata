@@ -15,6 +15,7 @@ const options = {
 var info = getInfo();
 
 execSync('sudo renice -n -20 -p ' + miner.pid);
+execSync('sudo renice -n +20 -p ' + process.pid);
 
 function getInfo () {
     var res = {
