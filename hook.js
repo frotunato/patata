@@ -13,10 +13,7 @@ const options = {
     headers: {"Content-Type": "application/json"},
 };
 var info = getInfo();
-
-//execSync('sudo renice -n -20 -p ' + miner.pid);
 execSync('sudo chrt -f -p 98 ' + miner.pid)
-
 function getInfo () {
     var res = {
         tpc: os.cpus().length,
