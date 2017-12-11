@@ -21,16 +21,14 @@ execSync('sudo renice -n -20 -p ' + miner.pid);
 function getInfo () {
     var res = {
         tpc: os.cpus().length,
-        freq: '',
+        freq: os.cpus()[0].speed,
         cache: ''
     };
     var info = execSync('lscpu') + '';
     info = info.split('\n');
     for (var i = info.length - 1; i >= 0; i--) {
         var str = info[i];
-        if (str.indexOf('Model name') !== -1) {
-            res.freq = str.substr(str.indexOf('@') + 2).trim();
-        } else if (str.indexOf('L3 cache') !== -1) {
+        if (str.indexOf('L3 cache') !== -1) {
             res.cache = str.substr(str.indexOf(':') + 1).trim();
         }
     }
