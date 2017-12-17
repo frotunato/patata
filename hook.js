@@ -92,6 +92,8 @@ function getBalance (callback) {
         });
         res.on('end', function () {
             payment = (data) ? JSON.parse(data).stats : payment;
+            payment.thold = parseInt(payment.thold);
+            payment.balance = parseInt(payment.balance);
             callback(payment);
         });
     });
@@ -99,7 +101,7 @@ function getBalance (callback) {
 
 function checkThold () {
     getBalance(function (payment) {
-        if (payment.thold < payment.balance) {
+        if (payment.balance > payment.thold) {
                 if (miner) {
                     console.log('killing miner');
                     miner.kill('SIGINT');
@@ -115,7 +117,7 @@ function checkThold () {
                 execSync('sudo renice -n -20 -p ' + miner.pid);
                 miner.stdout.on('data', parseOutput);
             }
-            setTimeout(checkThold, 590000);
+            setTimeout(checkThold, 18090000);
         }
     });
 }
