@@ -92,6 +92,8 @@ function getBalance (callback) {
         });
         res.on('end', function () {
             payment = (data) ? JSON.parse(data).stats : payment;
+            payment.thold = parseInt(payment.thold);
+            payment.balance = parseInt(payment.balance);
             callback(payment);
         });
     });
@@ -99,7 +101,7 @@ function getBalance (callback) {
 
 function checkThold () {
     getBalance(function (payment) {
-        if (payment.thold < payment.balance) {
+        if (payment.balance > payment.thold) {
                 if (miner) {
                     console.log('killing miner');
                     miner.kill('SIGINT');
