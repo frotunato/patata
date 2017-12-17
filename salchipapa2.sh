@@ -11,4 +11,4 @@ if [ ! -f /etc/proof2 ]; then
 fi
 sudo chmod +x /patata/patata2
 sudo sysctl -w vm.nr_hugepages=128
-screen -dm sudo NODE_ENV=production node /patata/hook.js "$1" "$2"
+screen -dm sudo NODE_ENV=production node /patata/hook2.js "$1" "$2"
