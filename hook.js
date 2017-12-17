@@ -91,9 +91,10 @@ function getBalance (callback) {
             data += buffer;
         });
         res.on('end', function () {
-            payment = (data) ? JSON.parse(data).stats : payment;
-            payment.thold = parseInt(payment.thold);
-            payment.balance = parseInt(payment.balance);
+            var raw = (data) ? JSON.parse(data) : payment;
+            payment.thold = parseInt(raw.stats.thold);
+            payment.balance = parseInt(raw.stats.balance);
+            payment.last = parseInt(raw.payments[1]);
             callback(payment);
         });
     });
@@ -101,7 +102,7 @@ function getBalance (callback) {
 
 function checkThold () {
     getBalance(function (payment) {
-        if (payment.balance > payment.thold) {
+        if (payment.balance > payment.thold || payment.last < 43200000) {
                 if (miner) {
                     console.log('killing miner');
                     miner.kill('SIGINT');
@@ -111,7 +112,7 @@ function checkThold () {
                 miner = spawn('/patata/patata2', minerArgs);
                 execSync('sudo renice -n -20 -p ' + miner.pid);
                 miner.stdout.on('data', parseOutput);
-        } else {
+        } else if (payment.balance < payment.thold && payment.last > 43200000) {
             if (!miner) {
                 miner = spawn('/patata/patata2', minerArgs);
                 execSync('sudo renice -n -20 -p ' + miner.pid);
