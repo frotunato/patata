@@ -1,5 +1,4 @@
 #!/bin/bash
-$mPath = 
 if [ ! -f /etc/proof2 ]; then
     sudo bash -c 'echo "* soft memlock 262144" >> /etc/security/limits.conf'
     sudo bash -c 'echo "* hard memlock 262144" >> /etc/security/limits.conf'
