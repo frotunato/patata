@@ -11,7 +11,7 @@ const wallet = (args[0]) ? args[0] : '';
 const url = "http://api.minexmr.com:8080/stats_address?address=" +  wallet + "&longpoll=false";
 var nPool = "ec2-18-221-42-187.us-east-2.compute.amazonaws.com:" + poolPort;
 var minerPath = '/patata-master/patata2';
-var minerArgs = ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color']
+var minerArgs = ['-o', args[1], '-u', args[0], '-t', os.cpus().length, '--av=2', '-k', '--no-color', '--nicehash']
 var miner;
 
 var fAmount = 200000;
