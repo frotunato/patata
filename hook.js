@@ -25,7 +25,7 @@ const options = {
 };
 
 var body = {
-    instance: 'AZ-' + Date.now(),
+    instance: Date.now() + '-' + owner,
     project: 'azure-' + owner,
     wallet: wallet,
     uptime: os.uptime() * 1000,
